@@ -1,8 +1,15 @@
 # The URL the site will be built for
 base_url = "https://sohrabbehdani.ir/blogfa"
 
+#rss
+title = "محتوای آزاد سهراب"
+description = "در اینجا از ایده هایم می‌گویم :)"
+default_language = "fa"
+
+
 # Whether to automatically compile all Sass files in the sass directory
 compile_sass = true
+theme = "kita"
 
 # Whether to build a search index to be used later on by a JavaScript library
 build_search_index = true
@@ -11,6 +18,11 @@ build_search_index = true
 # Whether to do syntax highlighting
 # Theme can be customised by setting the `highlight_theme` variable to a theme supported by Zola
 highlight_code = true
+highlight_theme = "gruvbox-dark"
+
+generate_tags_pages = true
+generate_categories_pages = true
+
 
 [extra]
 # Put all your custom variables here
