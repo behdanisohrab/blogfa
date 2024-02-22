@@ -1,3 +1,3 @@
-[submodule "themes/kita"]
-	path = themes/kita
+[submodule "themes/themes/kita"]
+	path = themes/themes/kita
 	url = https://github.com/behdanisohrab/kita.git
