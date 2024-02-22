@@ -1,3 +1,6 @@
 [submodule "themes/themes/kita"]
 	path = themes/themes/kita
 	url = https://github.com/behdanisohrab/kita.git
+[submodule "themes/kita"]
+	path = themes/kita
+	url = https://github.com/behdanisohrab/kita.git
