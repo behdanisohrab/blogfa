@@ -6,7 +6,7 @@ title = "محتوای آزاد سهراب"
 description = "در اینجا از ایده هایم می‌گویم :)"
 default_language = "fa"
 
-
+generate_feed = true
 # Whether to automatically compile all Sass files in the sass directory
 compile_sass = true
 theme = "kita"
