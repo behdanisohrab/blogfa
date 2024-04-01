@@ -30,7 +30,6 @@ generate_categories_pages = true
 enableComments = true
 # directly load the comments after pages loaded
 autoLoadComments = true
---*- Snip -*--
 ## Utterances
 enableUtterances = true
 utterancesRepo = "behdanisohrab/blogfa"
