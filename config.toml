@@ -26,3 +26,16 @@ generate_categories_pages = true
 
 [extra]
 # Put all your custom variables here
+# Note: render only in production environment
+enableComments = true
+# directly load the comments after pages loaded
+autoLoadComments = true
+--*- Snip -*--
+## Utterances
+enableUtterances = true
+utterancesRepo = "behdanisohrab/blogfa"
+utterancesIssueTerm = "pathname"
+utterancesTheme = "github-light"
+utterancesThemeDark = "photon-dark"
+utterancesLabel = "نظر بدهید"
+# Note: https://utteranc.es/
