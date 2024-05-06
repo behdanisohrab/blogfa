@@ -24,11 +24,10 @@ author="سهراب بهدانی"
 
 در کالامارس زمانی که شما می‌خواستید تهران رو به عنوان منطقه‌زمانی خودتون انتخاب کنید، همه جای نقشه سبز می‌شد جز تهران!
 
-![issue screenshot](./images/parchway/before.jpg)
-
+[![issue screenshot](https://github.com/behdanisohrab/blogfa/blob/main/content/images/parchway/before.jpg)
 و بعد از یک سری پیگیری‌ها داخل گروه کالامارس در نسخه جدید کالامارس این مشکل به صورت کلی برطرف شد 😁
 
-![issue screenshot](./images/parchway/after.jpg)
+![issue screenshot](https://github.com/behdanisohrab/blogfa/blob/main/content/images/parchway/before.jpg)
 
 
 ## مشکل عدم وجود کیبورد لاتین بعد از نصب به زبان فارسی
