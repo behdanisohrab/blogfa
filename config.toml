@@ -34,3 +34,18 @@ generate_categories_pages = true
 since = 2023
 license = "CC BY-SA 4.0"
 license_url = "https://creativecommons.org/licenses/by-sa/4.0/deed"
+
+
+[extra.giscus]
+repo = "behdanisohrab/blogfa"
+repo_id = "R_kgDOLTQMqA"
+category = "نظرات"
+category_id = "DIC_kwDOLTQMqM4CfVPD"
+mapping = "pathname"
+strict = 1
+reactions_enabled = 0
+emit_metadata = 0
+input_position = "bottom"
+theme = "noborder_gray"
+lang = "fa"
+loading = "lazy"
