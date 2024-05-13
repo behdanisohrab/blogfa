@@ -27,14 +27,10 @@ generate_categories_pages = true
 [extra]
 # Put all your custom variables here
 # Note: render only in production environment
-enableComments = true
-# directly load the comments after pages loaded
-autoLoadComments = true
-## Utterances
-enableUtterances = true
-utterancesRepo = "behdanisohrab/blogfa"
-utterancesIssueTerm = "pathname"
-utterancesTheme = "github-light"
-utterancesThemeDark = "photon-dark"
-utterancesLabel = "نظر بدهید"
-# Note: https://utteranc.es/
+
+
+
+[extra.footer]
+since = 2023
+license = "CC BY-SA 4.0"
+license_url = "https://creativecommons.org/licenses/by-sa/4.0/deed"
