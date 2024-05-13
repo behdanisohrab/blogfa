@@ -1,4 +1,4 @@
-
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Vazirmatn:wght@100..900&display=swap');
 /*
 ! tailwindcss v3.3.5 | MIT License | https://tailwindcss.com
 */
@@ -20,6 +20,7 @@
   /* 2 */
   border-color: #e5e7eb;
   /* 2 */
+  font-family: Vazirmatn;
 }
 
 ::before,
@@ -131,7 +132,7 @@ code,
 kbd,
 samp,
 pre {
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-family: "JetBrains Mono";
   /* 1 */
   font-size: 1em;
   /* 2 */
