@@ -28,7 +28,7 @@ generate_categories_pages = true
 # Put all your custom variables here
 # Note: render only in production environment
 
-
+comment = true
 
 [extra.footer]
 since = 2023
