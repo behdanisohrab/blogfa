@@ -1,8 +1,9 @@
 +++
 title = "رزبری‌پای و پارچ آرم"
 description = ""
-date=2024-08-05
+date=1403-05-15
 category = "پارچ"
+[taxonomies]
 tags = ["پارچ_آرم"]
 
 [extra]
