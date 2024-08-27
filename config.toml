@@ -42,6 +42,7 @@ menu_items = [
 ]
 
 enable_post_view_navigation = true
+post_view_navigation_prompt = "بیشتر بخوانید..."
 
 page_titles = "main_only"
 use_full_hack_font = true
