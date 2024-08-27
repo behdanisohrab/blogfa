@@ -26,6 +26,8 @@ git clone https://github.com/bepass-org/oblivion-desktop.git
 cd oblivion-desktop
 ```
 
+<!-- more -->
+
 بعد از وارد شدن به مسیر لازم هستش که یک فایلی رو ویرایش کنیم تا نسخه‌های deb و rpm رو برامون نسازه.
 
 فایل package.json رو با ادیتورتون بازش کنید.
