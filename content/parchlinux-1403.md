@@ -1,8 +1,9 @@
 +++
 title = "پارچ در سال ۱۴۰۳"
 description = "کارهایی که برای پارچ در این سال قراره انجام بشه"
-date=2024-03-24
+date=1403-01-05
 category = "پارچ"
+[taxonomies]
 tags = ["پارچ"]
 
 [extra]

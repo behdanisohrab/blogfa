@@ -1,8 +1,9 @@
 +++
 title = "و بازهم نوت هشت پرو ترکید....."
 description = "از دست این مدیاتک"
-date=2024-03-04
+date=1402-12-14
 category = "مدیاتک"
+[taxonomies]
 tags = ["مدیاتک"]
 
 [extra]

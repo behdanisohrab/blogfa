@@ -1,8 +1,9 @@
 +++
 title = "تست بلاگ زولا"
 description = "واقعا ارزششو داشت؟"
-date=2024-02-22
+date=1402-12-03
 category = "تست"
+[taxonomies]
 tags = ["تست"]
 
 [extra]

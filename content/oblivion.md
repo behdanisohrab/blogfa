@@ -1,8 +1,9 @@
  +++
 title = "آموزش نصب و راه اندازی برنامه oblivion روی لینوکس"
 description = "برای اینترنتی آزاد....."
-date=2024-05-13
+date=1403-02-24
 category = "پروکسی"
+[taxonomies]
 tags = ["پروکسی"]
 
 [extra]

@@ -1,8 +1,9 @@
 +++
 title = "زبان اسکریپت‌نویسی amber"
 description = ""
-date=2024-06-12
+date=1403-03-23
 category = "معرفی"
+[taxonomies]
 tags = ["معرفی_زبان"]
 
 [extra]

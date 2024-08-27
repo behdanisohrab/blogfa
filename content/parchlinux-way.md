@@ -1,8 +1,9 @@
 +++
 title = "کمی درمورد پارچ"
 description = "در پاسخ به برخی سوالات"
-date=2024-05-06
+date=1403-02-17
 category = "پارچ"
+[taxonomies]
 tags = ["پارچ"]
 
 [extra]

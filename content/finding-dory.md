@@ -1,8 +1,9 @@
 +++
 title = "در جستجوی دوری...."
 description = "ادامه یافته مبحث قبل، ولی با تمرکز بر پارچ"
-date=2024-02-24
+date=1402-12-05
 category = "پارچ"
+[taxonomies]
 tags = ["پارچ"]
 
 [extra]
