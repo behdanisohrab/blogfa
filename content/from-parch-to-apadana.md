@@ -34,7 +34,7 @@ author="سهراب بهدانی"
 
 ### پورت‌های چندگانه
 
-![میم معروف](./content/images/parchtoapadana/meme.jpg)
+![میم معروف](https://github.com/behdanisohrab/blogfa/raw/main/content/images/parchtoapadana/thememe.jpg)
 
 
 کاملاً درسته، ما پارچ رو روی دستگاه‌های مختلفی اجرا کردیم. از رایانه‌های میزکار گرفته تا تلفن‌های همراه.
