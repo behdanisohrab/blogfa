@@ -1,18 +1,17 @@
-name: Publish demo on GitHub Pages
-
-on:
- push:
-  branches:
-   - main
-
+on: push
+name: Build and deploy GH Pages
 jobs:
   build:
-    name: Publish site
+    name: Deploy
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout main
-      uses: actions/checkout@v3.0.0
-    - name: Build and deploy
-      uses: shalzz/zola-deploy-action@master
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # Checkout
+      - uses: actions/checkout@v2
+      # Build & deploy
+      - name: Deploy to gh-pages branch
+        uses: shalzz/zola-deploy-action@v0.17.2
+        env:
+          # Target branch
+          PAGES_BRANCH: gh-pages
+          # Worker token
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
