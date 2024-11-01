@@ -6,7 +6,7 @@ description = "در اینجا از ایده هایم می‌گویم :)"
 default_language = "fa"
 
 generate_feeds = true
-
+feed_filenames = ["rss.xml"]
 
 
 taxonomies = [
