@@ -24,7 +24,6 @@
 
   %meta {
     font-size: 1rem;
-    margin-bottom: 10px;
     color: var(--accent-alpha-70);
   }
 
@@ -53,9 +52,19 @@
   }
 
   %tags {
-    margin-bottom: 20px;
     font-size: 1rem;
     opacity: .5;
+  }
+
+  &-details {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    justify-content: space-between;
+
+    @media (max-width: $phone-max-width) {
+      display: block;
+    }
   }
 
   &-tags {
@@ -66,7 +75,7 @@
 
   &-tags-inline {
     @extend %tags;
-
+    direction: rtl;
     display: inline;
 
     @media (max-width: $phone-max-width) {
@@ -98,6 +107,7 @@
       content: '►';
       position: absolute;
       right: -20px;
+      transform: rotate(180deg);
       color: var(--accent);
 
     }
@@ -113,7 +123,7 @@
     justify-content: center;
     margin-bottom: 10px;
 
-    &+ h2 {
+    &+h2 {
       margin-top: -10px;
       margin-bottom: 20px;
     }
