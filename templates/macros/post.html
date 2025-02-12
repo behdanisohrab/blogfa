@@ -66,11 +66,14 @@
 
 {% macro header(page) %}
     <h1 class="post-title"><a href="{{ page.permalink | safe }}">{{ page.title }}</a></h1>
-    <div class="post-meta-inline">
-        {{ post_macros::date(page=page) }}
-    </div>
 
-    {{ post_macros::tags(page=page) }}
+    <div class="post-details">
+        <div class="post-meta-inline">
+            {{ post_macros::date(page=page) }}
+        </div>
+
+        {{ post_macros::tags(page=page) }}
+    </div>
 {% endmacro header %}
 
 
@@ -98,7 +101,7 @@
                 ::
                 {%- set sep = "," -%}
             {% else %}
-                :: tags:&nbsp;
+                :: تگ‌ها :&nbsp;
                 {%- set sep = "&nbsp;" -%}
             {% endif -%}
             {%- for tag in page.taxonomies.tags | sort | unique(case_sensitive=false) %}
