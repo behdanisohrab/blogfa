@@ -58,3 +58,4 @@ author="سهراب بهدانی"
 <meta name="fediverse:creator" content="@sohrab@bsd.cafe">
 </div>
 
+{{ comments(id="114041078347939632") }}

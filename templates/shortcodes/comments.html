@@ -1,0 +1,35 @@
+<section id="comments">
+  <h2>کامنت‌ها</h2>
+  <p>
+    <a
+      href="https://{{ config.extra.mastodon.host }}/@{{ config.extra.mastodon.username }}/{{ id }}"
+      class="send-comment"
+      >نظر خودتان را بنویسید!</a
+    >
+    <span class="send-comment-desc">
+      با هر حساب متصل به فدیورس می‌توانید نظر خود را بنویسید (مانند ماستودون)
+    </span>
+  </p>
+  <p id="loading-text" class="hidden">بارگیری کامنت‌ها...</p>
+  <div id="comments-wrapper">
+    <noscript
+      ><p>
+        Loading comments relies on JavaScript. Try enabling JavaScript and
+        reloading, or visit
+        <a
+          href="https://{{ config.extra.mastodon.host }}/@{{ config.extra.mastodon.username }}/{{ id }}"
+          >the original post</a
+        >
+        on Mastodon.
+      </p></noscript
+    >
+  </div>
+  <noscript>You need JavaScript to view the comments.</noscript>
+  <script src="/comments/purify.min.js"></script>
+  <script type="text/javascript">
+    let host = '{{ config.extra.mastodon.host }}';
+    let username = '{{ config.extra.mastodon.username }}';
+    let id = '{{ id }}';
+  </script>
+  <script src="/comments/comments.js"></script>
+</section>
