@@ -50,3 +50,7 @@ use_full_hack_font = true
 since = 2023
 license = "CC BY-SA 4.0"
 license_url = "https://creativecommons.org/licenses/by-sa/4.0/deed"
+
+[extra.mastodon]
+host = "persadon.com"
+username = "sohrab"

@@ -1,0 +1,107 @@
+section#comments {
+    .send-comment {
+        color: var(--accent);
+        text-decoration: none;
+        padding: 0 .5rem;
+        margin-inline-end: 1rem;
+
+        &::before {
+            content: '>';
+            padding: 0 .5rem;
+        }
+
+        &::after {
+            content: '<';
+            padding: 0 .5rem;
+        }
+
+        &:hover {
+            background-color: var(--accent-alpha-70);
+            color: var(--color);
+        }
+    }
+
+    .send-comment-desc {
+        font-size: .8rem;
+    }
+
+    #loading-text {
+        color: var(--accent);
+        text-align: center;
+
+        .hidden {
+            display: none;
+        }
+    }
+
+    #comments-wrapper {
+        display: flex;
+        flex-direction: column;
+    }
+
+    article.comment {
+        border-top: 1px solid var(--accent);
+        border-bottom: 1px solid var(--accent);
+        direction: rtl;
+        display: flex;
+        flex-direction: column;
+
+        .header {
+            padding: 0.5rem;
+            display: flex;
+            flex-direction: row;
+            gap: 0.75rem;
+            background-color: var(--accent-alpha-20);
+
+            .avatar-link {
+                // the link to the author's profile
+                display: flex;
+                align-items: center;
+
+                img.avatar {
+                    width: 3.5rem;
+                }
+            }
+
+            picture {
+                // author's avatar
+                display: flex;
+            }
+
+            .header-info {
+                // displayInstance, timestamp, and faves
+                display: flex;
+                flex-direction: column;
+
+                .display {
+                    // author's displayed name, not username
+                    font-weight: bold;
+                    display: flex;
+                    gap: .25rem;
+                    font-size: 1rem;
+                }
+
+                :is(.instance, .faves, time) {
+                    font-size: .8rem;
+                }
+
+                .instance {
+                    direction: ltr;
+                    font-size: .6rem;
+                }
+
+                .user-info {
+                    display: flex;
+                    gap: .5rem;
+                    align-items: baseline;
+                }
+            }
+
+
+        }
+
+        main {
+            padding: 0 1rem;
+        }
+    }
+}
