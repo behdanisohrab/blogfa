@@ -4,22 +4,19 @@
 .posts {
   width: 100%;
   margin: 0 auto;
-
 }
-
-
 
 .post {
   width: 100%;
-  margin: 20px auto;
-  padding: 20px 0;
+  margin-block: 20px;
+  padding-block: 20px;
 
   @media (max-width: $tablet-max-width) {
     max-width: 660px;
   }
 
   &:not(:last-of-type) {
-    border-bottom: 1px solid var(--border-color);
+    border-block-end: 1px solid var(--border-color);
   }
 
   %meta {
@@ -42,8 +39,8 @@
     position: relative;
     color: var(--accent);
     margin: 0 0 15px;
-    padding-bottom: 15px;
-    border-bottom: var(--border);
+    padding-block-end: 15px;
+    border-block-end: var(--border);
     font-weight: normal;
 
     a {
@@ -84,13 +81,13 @@
   }
 
   &-content {
-    margin-top: 30px;
+    margin-block-start: 30px;
   }
 
   &-cover {
     border: 20px solid var(--accent);
     background: transparent;
-    margin: 40px 0;
+    margin-block: 40px;
     padding: 20px;
 
     @media (max-width: $phone-max-width) {
@@ -101,31 +98,36 @@
 
   ul {
     list-style: none;
+    padding-inline-start: 0;
     direction: rtl;
 
-    li:before {
-      content: '►';
-      position: absolute;
-      right: -20px;
-      transform: rotate(180deg);
-      color: var(--accent);
+    li {
+      margin-inline-start: 20px;
+      position: relative;
+    }
 
+    li::before {
+      content: '◄';
+      position: absolute;
+      inset-inline-start: -20px;
+      color: var(--accent);
+      transform: none;
     }
   }
 }
 
 .post--regulation {
-  h1 {
+  h1, h2 {
     justify-content: center;
+    text-align: center;
   }
 
   h2 {
-    justify-content: center;
-    margin-bottom: 10px;
+    margin-block-end: 10px;
 
     &+h2 {
-      margin-top: -10px;
-      margin-bottom: 20px;
+      margin-block-start: -10px;
+      margin-block-end: 20px;
     }
   }
 }
