@@ -37,7 +37,7 @@ menu_items = [
     {name = "برچسب‌ها", url = "$BASE_URL/tags"},
     {name = "آرشیو‌ها", url = "$BASE_URL/archive"},
     {name = "وبگاه من", url = "https://sohrabbehdani.ir", newtab = true},
-    {name = "بلاگ انگلیسی", url = "https://sohrabbehdani.ir/blog", newtab = true},
+    {name = "بلاگ انگلیسی", url = "https://blog.sohrabbehdani.ir/", newtab = true},
 ]
 
 enable_post_view_navigation = true
