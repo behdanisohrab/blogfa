@@ -90,4 +90,6 @@ author="سهراب بهدانی"
 اگه می‌خواین به جامعه پارچ بپیوندین، سری به وبسایت پارچ بزنین تا راه‌های مختلف ارتباط رو ببینین.
 
 
-
+<div>
+<meta name="fediverse:creator" content="@sohrab@bsd.cafe">
+</div>
