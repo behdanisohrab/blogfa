@@ -136,3 +136,5 @@ qemu-system-x86_64 -kernel bzImage -initrd initramfs.cpio.gz -nographic -append 
 <div>
 <meta name="fediverse:creator" content="@sohrab@bsd.cafe">
 </div>
+
+{{ comments(id="115518749520668800") }}
