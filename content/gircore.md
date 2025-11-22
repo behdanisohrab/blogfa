@@ -442,3 +442,10 @@ return app.RunWithSynchronizationContext(null);
 [https://github.com/gircore/gir.core](https://github.com/gircore/gir.core)
 
 همچنین راهنماهای GTK و Libadwaita هم خیلی مفیده چون تقریباً تمام مفاهیم به همون شکل در GirCore پیاده‌سازی شدن. امیدوارم این نوشته براتون مفید بوده باشه و بتونید شروع به ساخت برنامه‌های گنو/لینوکسی با سی‌شارپ کنید.
+
+
+
+<div>
+<meta name="fediverse:creator" content="@sohrab@bsd.cafe">
+</div>
+
