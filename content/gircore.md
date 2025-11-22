@@ -366,7 +366,7 @@ aboutAction.OnActivate += (s, e) =>
     aboutWindow.SetApplicationIcon("ir.sohrabbehdani.calculator");
     aboutWindow.SetVersion("1.0.0");
     aboutWindow.SetDeveloperName("Sohrab Behdani");
-    aboutWindow.SetCopyright("© 2024 Sohrab Behdani");
+    aboutWindow.SetCopyright("© 2025 Sohrab Behdani");
     aboutWindow.SetLicenseType(License.Gpl30);
     aboutWindow.Present();
 };
