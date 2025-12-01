@@ -2,6 +2,7 @@
 
 .pagination {
   margin-top: 50px;
+  direction: rtl;
 
   &__title {
     display: flex;
@@ -14,10 +15,11 @@
       margin: 0 auto;
       padding: 5px 10px;
       background: var(--background);
-      font-size: .8rem;
+      font-size: .9rem;
       text-transform: uppercase;
       letter-spacing: .1em;
       z-index: 1;
+      font-family: "Vazirmatn", sans-serif;
     }
 
     hr {
@@ -34,9 +36,13 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 10px;
+    flex-direction: row-reverse;
+    direction: rtl;
 
     @media (max-width: $phone-max-width) {
       flex-direction: column;
+      gap: 15px;
     }
   }
 }
@@ -52,26 +58,107 @@
   padding: 0;
   cursor: pointer;
   appearance: none;
+  direction: rtl;
+  background: var(--accent-alpha-20);
+  border: 2px solid var(--accent);
+  transition: all 0.2s ease;
 
   @media (max-width: $phone-max-width) {
-    max-width: 80%;
+    max-width: 90%;
+  }
+
+  &:hover {
+    background: var(--accent);
+    color: var(--background);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   }
 
   + .button {
-    margin-left: 10px;
+    margin-right: 10px;
+    margin-left: 0;
+
+    @media (max-width: $phone-max-width) {
+      margin-right: 0;
+      margin-top: 10px;
+    }
   }
 
   a {
     display: flex;
-    padding: 8px 16px;
+    padding: 10px 18px;
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
+    text-decoration: none;
+    align-items: center;
+    gap: 8px;
+    direction: rtl;
+    width: 100%;
+    justify-content: center;
   }
 
   &__text {
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
+    font-family: "Vazirmatn", sans-serif;
+    font-weight: 500;
+  }
+
+  &__icon {
+    font-size: 1.2rem;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  &.previous {
+    .button__icon {
+      order: 2;
+    }
+    
+    .button__text {
+      order: 1;
+    }
+  }
+
+  &.next {
+    .button__icon {
+      order: 1;
+    }
+    
+    .button__text {
+      order: 2;
+    }
+  }
+}
+
+// دکمه "ادامه مطلب"
+a.read-more {
+  display: inline-flex;
+  background: var(--accent-alpha-20);
+  border: 2px solid var(--accent);
+  padding: 8px 16px;
+  margin: 20px 0;
+  max-width: 100%;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  direction: rtl;
+
+  &:hover {
+    background: var(--accent);
+    color: var(--background);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+
+  .button__text {
+    font-family: "Vazirmatn", sans-serif;
+    font-weight: 500;
+  }
+
+  .button__icon {
+    margin-right: 0;
+    margin-left: 8px;
   }
 }

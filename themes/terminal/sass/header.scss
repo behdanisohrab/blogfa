@@ -16,24 +16,27 @@
   display: flex;
   flex-direction: column;
   position: relative;
+  direction: rtl;
 
   &__inner {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    direction: rtl;
   }
 
   &__logo {
     display: flex;
-    flex-direction: row-reverse;
+    flex-direction: row;
     flex: 1;
+    direction: rtl;
 
     &:after {
       content: '';
       background: repeating-linear-gradient(90deg, var(--accent), var(--accent) 2px, transparent 0, transparent 16px);
       display: block;
       width: 100%;
-      right: 10px;
+      left: 10px;
     }
 
     a {
@@ -44,19 +47,37 @@
 
   .menu {
     margin: 20px 0;
+    direction: rtl;
 
     &__inner {
       display: flex;
       flex-wrap: wrap;
-      flex-direction: row-reverse;
+      flex-direction: row;
       gap: 1rem;
       list-style: none;
       margin: 0;
       padding: 0;
+      direction: rtl;
 
       li {
+        direction: rtl;
+        
         &.active {
-          color: var(--accent-alpha-70);
+          color: var(--accent);
+          font-weight: bold;
+          
+          a {
+            color: var(--accent);
+          }
+        }
+
+        a {
+          text-decoration: none;
+          transition: color 0.2s ease;
+          
+          &:hover {
+            color: var(--accent);
+          }
         }
       }
     }
@@ -66,15 +87,18 @@
       list-style: none;
       padding: 0;
       margin: 0;
+      direction: rtl;
 
       &:not(:only-child) {
-        margin-left: 20px;
+        margin-right: 20px;
+        margin-left: 0;
       }
 
       &-more {
         @include menu;
         top: 35px;
-        left: 0;
+        right: 0;
+        direction: rtl;
 
         &-trigger {
           color: var(--accent);
@@ -86,6 +110,7 @@
           margin: 0;
           padding: 5px;
           white-space: nowrap;
+          direction: rtl;
         }
       }
     }

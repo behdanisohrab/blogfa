@@ -1,6 +1,5 @@
 @import "variables";
 
-
 .posts {
   width: 100%;
   margin: 0 auto;
@@ -10,6 +9,7 @@
   width: 100%;
   margin-block: 20px;
   padding-block: 20px;
+  direction: rtl;
 
   @media (max-width: $tablet-max-width) {
     max-width: 660px;
@@ -20,7 +20,7 @@
   }
 
   %meta {
-    font-size: 1rem;
+    font-size: 0.95rem;
     color: var(--accent-alpha-70);
   }
 
@@ -30,7 +30,6 @@
 
   &-meta-inline {
     @extend %meta;
-
     display: inline;
   }
 
@@ -41,16 +40,23 @@
     margin: 0 0 15px;
     padding-block-end: 15px;
     border-block-end: var(--border);
-    font-weight: normal;
+    font-weight: bold;
+    direction: rtl;
+    text-align: right;
 
     a {
       text-decoration: none;
+      direction: rtl;
+      
+      &:hover {
+        text-decoration: underline;
+      }
     }
   }
 
   %tags {
-    font-size: 1rem;
-    opacity: .5;
+    font-size: 0.9rem;
+    opacity: 0.7;
   }
 
   &-details {
@@ -58,6 +64,7 @@
     align-items: center;
     gap: 1rem;
     justify-content: space-between;
+    direction: rtl;
 
     @media (max-width: $phone-max-width) {
       display: block;
@@ -66,8 +73,8 @@
 
   &-tags {
     @extend %tags;
-
     display: block;
+    direction: rtl;
   }
 
   &-tags-inline {
@@ -77,11 +84,24 @@
 
     @media (max-width: $phone-max-width) {
       display: block;
+      margin-top: 0.5rem;
     }
   }
 
   &-content {
     margin-block-start: 30px;
+    direction: rtl;
+    text-align: justify;
+    line-height: 1.8;
+
+    p {
+      margin-bottom: 1.5rem;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+    }
   }
 
   &-cover {
@@ -99,19 +119,34 @@
   ul {
     list-style: none;
     padding-inline-start: 0;
+    padding-inline-end: 0;
+    margin-right: 1.5rem;
     direction: rtl;
 
     li {
-      margin-inline-start: 20px;
+      margin-inline-start: 0;
+      margin-inline-end: 25px;
       position: relative;
+      margin-bottom: 0.75rem;
     }
 
     li::before {
       content: '◄';
       position: absolute;
-      inset-inline-start: -20px;
+      inset-inline-end: -25px;
       color: var(--accent);
       transform: none;
+      font-weight: bold;
+    }
+  }
+
+  ol {
+    direction: rtl;
+    padding-right: 1.5rem;
+    padding-left: 0;
+
+    li {
+      margin-bottom: 0.75rem;
     }
   }
 }
@@ -133,20 +168,50 @@
 }
 
 .post-list {
+  direction: rtl;
+
   .post-date {
     color: var(--accent-alpha-70);
     text-decoration: none;
+    font-family: "Vazirmatn", sans-serif;
   }
 
   a {
     text-decoration: none;
+    
+    &:hover {
+      text-decoration: underline;
+    }
   }
 
   .post-list-title {
     text-decoration: underline;
+    font-weight: 500;
   }
 
   .post-tag {
     text-decoration: underline;
+    margin: 0 0.25rem;
+    
+    &:hover {
+      color: var(--accent);
+    }
+  }
+}
+
+time {
+  font-family: "Vazirmatn", sans-serif;
+  direction: ltr;
+  display: inline-block;
+}
+
+.post-content {
+  a {
+    color: var(--accent);
+    text-decoration: underline;
+    
+    &:hover {
+      opacity: 0.8;
+    }
   }
 }
