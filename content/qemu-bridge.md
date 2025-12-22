@@ -111,3 +111,5 @@ sudo iptables -I FORWARD -m physdev --physdev-is-bridged -j ACCEPT
 <meta name="fediverse:creator" content="@sohrab@bsd.cafe">
 </div>
 
+{{ comments(id="115764443509607201") }}
+
