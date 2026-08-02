@@ -1,3 +1,6 @@
-{% macro now_year() %}
-    {{ now() | date(format="%Y") }}
-{% endmacro %}
+{% macro now_year() %}{{ now() | date(format="%Y") }}{% endmacro now_year %}
+
+{% macro fa_digits(num) %}
+{%- set s = num ~ "" -%}
+{{- s | replace(from="0", to="۰") | replace(from="1", to="۱") | replace(from="2", to="۲") | replace(from="3", to="۳") | replace(from="4", to="۴") | replace(from="5", to="۵") | replace(from="6", to="۶") | replace(from="7", to="۷") | replace(from="8", to="۸") | replace(from="9", to="۹") -}}
+{% endmacro fa_digits %}

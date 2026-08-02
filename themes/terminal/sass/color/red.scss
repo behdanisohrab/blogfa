@@ -1,9 +1,17 @@
 :root {
-  --accent: rgb(255,98,102);
-  --accent-alpha-70: rgba(255,98,102,.7);
-  --accent-alpha-20: rgba(255,98,102,.2);
-
-  --background: #221F29;
-  --color: white;
-  --border-color: rgba(255, 255, 255, .1);
+  color-scheme: dark;
+  --accent: #f47067;
+  --accent-hi: #ff958d;
+  --accent-lo: #c0392b;
+  --accent-soft: rgba(244, 112, 103, 0.12);
+  --accent-text: #1f0503;
+  --bg: #120a0a;
+  --surface: #181010;
+  --surface-2: #201616;
+  --fg: #ddc9c6;
+  --fg-dim: #a08f8c;
+  --fg-faint: #61504d;
+  --border: rgba(220, 170, 165, 0.1);
+  --border-strong: rgba(244, 112, 103, 0.32);
+  --glow: rgba(244, 112, 103, 0.1);
 }

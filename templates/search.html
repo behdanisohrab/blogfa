@@ -1,0 +1,22 @@
+{% extends "index.html" %}
+
+{%- block title -%}
+{{ title_macros::title(page_title=page.title, main_title=config.title) }}
+{%- endblock -%}
+
+{% block content %}
+    <article class="post post--single" style="--i: 1">
+        <h1 class="post__title post__title--single">{{ page.title }}</h1>
+
+        <div class="search">
+            <label class="search__label" for="search-input">عبارت مورد نظر را بنویسید:</label>
+            <input id="search-input" class="search__input" type="search" dir="rtl"
+                   placeholder="جستجو در مطالب…" autocomplete="off" spellcheck="false">
+            <p id="search-status" class="search__status" role="status"></p>
+            <ul id="search-results" class="search__results"></ul>
+        </div>
+
+        <script>window.SEARCH_URL = "{{ get_url(path='search_index.fa.json', trailing_slash=false) | safe }}";</script>
+        <script defer src="{{ get_url(path='search.js', trailing_slash=false) | safe }}"></script>
+    </article>
+{% endblock content %}

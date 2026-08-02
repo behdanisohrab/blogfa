@@ -6,15 +6,10 @@
 {%- endblock -%}
 
 {% block content %}
-    <div class="post">
-        <h1 class="post-title">
-            tag: #{{ term.name }}
-            ({{ term.pages | length }} post{{ term.pages | length | pluralize }})
-        </h1>
+    <div class="post post--single" style="--i: 1">
+        <h1 class="post__title post__title--single" dir="auto">#{{ term.name }}</h1>
 
-        <a href="{{ config.base_url | safe }}/tags/">
-            نمایش همه برچسب‌ها
-        </a>
+        <a class="tag__back" href="{{ config.base_url | trim_end_matches(pat='/') | safe }}/tags/">[همه برچسب‌ها]</a>
 
         {{ post_macros::list_posts(pages=term.pages) }}
     </div>

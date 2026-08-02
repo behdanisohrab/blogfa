@@ -1,3 +1,12 @@
 :root {
-  --background: #1F222A;
+  color-scheme: dark;
+  --bg: #0a0f0c;
+  --surface: #10170f;
+  --surface-2: #172017;
+  --fg: #c9d7c8;
+  --fg-dim: #8fa490;
+  --fg-faint: #54665a;
+  --border: rgba(180, 216, 190, 0.1);
+  --border-strong: rgba(61, 220, 132, 0.32);
+  --glow: rgba(61, 220, 132, 0.1);
 }

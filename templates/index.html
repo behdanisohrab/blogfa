@@ -5,7 +5,7 @@
 {% import "macros/title.html" as title_macros -%}
 
 <!DOCTYPE html>
-<html lang="{%- if config.default_language -%}{{ config.default_language }}{%- else -%}en{%- endif -%}">
+<html lang="{{ config.default_language | default(value='fa') }}" dir="rtl">
 
 <head>
     <title>{%- block title %}{{ config.title }}{% endblock title -%}</title>
@@ -27,36 +27,50 @@
     {%- endif -%}
 
     {%- if config.extra.favicon %}
-        <link rel="shortcut icon" type="{{ config.extra.favicon_mimetype | default(value="image/x-icon") | safe }}" href="{{ config.extra.favicon | safe }}">
+        <link rel="shortcut icon" type="{{ config.extra.favicon_mimetype | default(value='image/x-icon') | safe }}" href="{{ config.extra.favicon | safe }}">
     {% endif -%}
 
     {%- block extra_head %}
     {% endblock extra_head -%}
 </head>
 
-<body class="">
+<body>
+<div id="progress-bar" class="progress" aria-hidden="true"></div>
 <div class="container">
     {% block header %}
     <header class="header">
-        <div class="header__inner">
-            <div class="header__logo">
-                {%- if config.extra.logo_home_link %}
-                    {% set logo_link = config.extra.logo_home_link %}
-                {% else %}
-                    {% set logo_link = config.base_url %}
-                {% endif -%}
-                <a href="{{ logo_link | safe }}" style="text-decoration: none;">
-                    <div class="logo">
-                      {% block logo_content %}
-                        {%- if config.extra.logo_text %}
-                            {{ config.extra.logo_text }}
-                        {% else %}
-                            Terminimal theme
-                        {% endif -%}
-                        {% endblock logo_content %}
-                    </div>
-                </a>
-            </div>
+        <div class="header__bar">
+            <span class="header__prompt" aria-hidden="true">
+                <span class="header__user">{{ config.extra.mastodon.username | default(value='me') }}</span>@<span class="header__host">blog</span>:~$<span class="header__cursor"></span>
+            </span>
+            <span class="header__extra">
+                {%- if config.generate_feeds %}
+                    {%- set feed = config.feed_filenames | first | default(value='rss.xml') %}
+                    <a class="header__rss" href="{{ get_url(path=feed, trailing_slash=false) | safe }}">[rss]</a>
+                {%- endif %}
+            </span>
+        </div>
+
+        <div class="header__brand">
+            {%- if config.extra.logo_home_link %}
+                {% set logo_link = config.extra.logo_home_link %}
+            {% else %}
+                {% set logo_link = config.base_url %}
+            {% endif -%}
+            {%- if section %}
+                <h1 class="header__title">
+            {%- else %}
+                <div class="header__title">
+            {%- endif %}
+                    <a href="{{ logo_link | safe }}">{% block logo_content %}{{ config.extra.logo_text | default(value=config.title) }}{% endblock logo_content %}</a>
+            {%- if section %}
+                </h1>
+            {%- else %}
+                </div>
+            {%- endif %}
+            {%- if config.description %}
+                <p class="header__desc">{{ config.description }}</p>
+            {%- endif %}
         </div>
 
         {% block header_menu %}
@@ -75,32 +89,26 @@
             {% endif -%}
 
             {%- for page in show_pages %}
-                <div class="post on-list">
+                <article class="post on-list" style="--i: {{ loop.index }}">
                     {{ post_macros::header(page=page) }}
-
                     {{ post_macros::content(page=page, summary=true, show_only_description=page.extra.show_only_description | default(value=false)) }}
-                </div>
+                </article>
             {% endfor -%}
-            <div class="pagination">
-                <div class="pagination__buttons">
-                {%- if paginator.previous %}
-                    <span class="button previous">
-                        <a href="{{ paginator.previous | safe }}">
-                            <span class="button__icon">←</span>&nbsp;
-                            <span class="button__text">مطالب جدیدتر</span>
-                        </a>
-                    </span>
-                {% endif -%}
-                {%- if paginator.next %}
-                    <span class="button next">
-                        <a href="{{ paginator.next | safe }}">
-                            <span class="button__text">مطالب قدیمی‌تر</span>&nbsp;
-                            <span class="button__icon">→</span>
-                        </a>
-                    </span>
-                {% endif -%}
-                </div>
-            </div>
+
+            {%- if paginator %}
+                <nav class="pagination" aria-label="صفحه‌بندی">
+                    {%- if paginator.previous %}
+                        <a class="pgn prev" href="{{ paginator.previous | safe }}"><span aria-hidden="true">←</span> مطالب جدیدتر</a>
+                    {%- else %}
+                        <span class="pgn pgn--empty"></span>
+                    {%- endif %}
+                    {%- if paginator.next %}
+                        <a class="pgn next" href="{{ paginator.next | safe }}">مطالب قدیمی‌تر <span aria-hidden="true">→</span></a>
+                    {%- else %}
+                        <span class="pgn pgn--empty"></span>
+                    {%- endif %}
+                </nav>
+            {% endif -%}
         </div>
         {% endblock content %}
     </div>
@@ -110,20 +118,26 @@
         <div class="footer__inner">
             {%- if config.extra.copyright_html %}
                 <div class="copyright copyright--user">{{ config.extra.copyright_html | safe }}</div>
-            {% else %}
+            {%- else %}
+                {%- set this_year = date_macros::now_year() %}
                 <div class="copyright">
                     {%- if config.extra.author %}
-                        <span>© {{ date_macros::now_year() }} {{ config.extra.author }}</span>
-                    {% else %}
-                        <span>© {{ date_macros::now_year() }} Powered by <a href="https://www.getzola.org/">Zola</a></span>
-                    {% endif -%}
-
+                        <span>© {{ date_macros::fa_digits(num=this_year) }} {{ config.extra.author }}</span>
+                    {%- else %}
+                        <span>© {{ date_macros::fa_digits(num=this_year) }}</span>
+                    {%- endif %}
                 </div>
-            {% endif -%}
+                {%- if config.extra.footer and config.extra.footer.license %}
+                    <div class="footer__license">
+                        <a href="{{ config.extra.footer.license_url | default(value='#') }}" rel="license">{{ config.extra.footer.license }}</a>
+                        {%- if config.extra.footer.since %} · از {{ date_macros::fa_digits(num=config.extra.footer.since) }}{%- endif %}
+                    </div>
+                {%- endif %}
+                <div class="footer__powered">ساخته‌شده با <a href="https://www.getzola.org/">زولا</a></div>
+            {%- endif %}
         </div>
     </footer>
     {% endblock footer %}
-
 </div>
 {%- block extra_body %}
 {% endblock extra_body -%}

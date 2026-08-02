@@ -4,13 +4,23 @@
 {{ title_macros::title(page_title=page.title, main_title=config.title) }}
 {%- endblock -%}
 
+{% block extra_head %}
+{%- if page.extra and page.extra.fediverse_creator %}
+<meta name="fediverse:creator" content="{{ page.extra.fediverse_creator }}">
+{%- endif %}
+{% endblock extra_head %}
+
 {% block content %}
-    <div class="post">
-        {{ post_macros::header(page=page) }}
+    <article class="post post--single" style="--i: 1">
+        {{ post_macros::header(page=page, detail=true) }}
+        {%- if page.toc and page.toc | length >= 2 %}
+        <details class="toc" open>
+            <summary class="toc__summary">فهرست مطالب</summary>
+            {{ post_macros::toc(toc=page.toc) }}
+        </details>
+        {%- endif %}
         {{ post_macros::content(page=page, summary=false, show_only_description=false) }}
+        {{ post_macros::related(page=page) }}
         {{ post_macros::earlier_later(page=page) }}
-    </div>
+    </article>
 {% endblock content %}
-
-
-<meta name="fediverse:creator" content="@sohrab@mastodon.bsd.cafe" />

@@ -15,14 +15,37 @@ taxonomies = [
 compile_sass = true
 theme = "terminal"
 
-build_search_index = false
+minify_html = true
+
+build_search_index = true
 
 [markdown]
-highlight_code = true
-highlight_theme = "boron"
+#generate_tags_pages = true
+#generate_categories_pages = true
 
-generate_tags_pages = true
-generate_categories_pages = true
+# GitHub-style alerts (callouts): > [!NOTE], > [!TIP], > [!WARNING], ...
+github_alerts = true
+
+# Syntax highlighting (giallo). Class-based styles so light/dark follow the
+# auto color themes; the generated giallo-light.css / giallo-dark.css files
+# are linked in templates/macros/head.html with matching media queries.
+[markdown.highlighting]
+error_on_missing_language = false
+style = "class"
+dark_theme = "catppuccin-mocha"
+light_theme = "catppuccin-latte"
+
+[link_checker]
+# External links can be flaky in CI; warn instead of failing the build.
+external_level = "warn"
+
+[search]
+include_title = true
+include_description = true
+include_content = true
+include_path = true
+index_format = "fuse_json"
+
 
 
 [extra]
@@ -36,6 +59,7 @@ menu_items = [
     {name = "بلاگ", url = "$BASE_URL"},
     {name = "برچسب‌ها", url = "$BASE_URL/tags"},
     {name = "آرشیو‌ها", url = "$BASE_URL/archive"},
+    {name = "جستجو", url = "$BASE_URL/search"},
     {name = "وبگاه من", url = "https://sohrabbehdani.ir", newtab = true},
     {name = "بلاگ انگلیسی", url = "https://blog.sohrabbehdani.ir/", newtab = true},
 ]
@@ -44,7 +68,7 @@ enable_post_view_navigation = true
 #post_view_navigation_prompt = "بیشتر بخوانید..."
 
 page_titles = "main_only"
-use_full_hack_font = true
+logo_text = "مطالب سهراب"
 
 [extra.footer]
 since = 2023

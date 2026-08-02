@@ -1,21 +1,32 @@
+{% import "macros/date.html" as date_macros -%}
+
+{% macro header(page, detail=false) %}
+    <div class="post__meta{% if detail %} post__meta--single{% endif %}">
+        {{ post_macros::date(page=page) }}
+        {{ post_macros::tags(page=page) }}
+        {%- if detail and page.reading_time %}
+            {{ post_macros::reading_time(page=page) }}
+        {%- endif %}
+    </div>
+    {%- if detail %}
+        <h1 class="post__title post__title--single">{{ page.title }}</h1>
+    {%- else %}
+        <h2 class="post__title"><a href="{{ page.permalink | safe }}">{{ page.title }}</a></h2>
+    {%- endif %}
+{% endmacro header %}
+
+
 {% macro content(page, summary, show_only_description) %}
     {%- if show_only_description %}
-        <div class="post-content">
+        <div class="post-content post__summary">
             {{ page.description | safe }}
         </div>
     {% elif summary and page.summary %}
-        <div class="post-content">
+        <div class="post-content post__summary">
             {{ page.summary | safe }}
         </div>
-        <div>
-            <!-- &#xFE0E; -- force text style - some devices render this as emoji -->
-            <a class="read-more button" href="{{ page.permalink | safe }}">
-                <span class="button__text">بیشتر بخوانید</span>&nbsp;
-                <span class="button__icon">&#8617;&#xFE0E;</span>
-            </a>
-        </div>
+        <a class="post__more" href="{{ page.permalink | safe }}">ادامه مطلب <span aria-hidden="true">←</span></a>
     {% else %}
-        {#- full content -#}
         <div class="post-content">
             {{ page.content | safe }}
         </div>
@@ -24,70 +35,47 @@
 
 
 {% macro date(page) %}
-    <span class="post-date">
-        {%- if page.date %}
-            {{ page.date | date(format="%Y-%m-%d") }}
-        {% endif -%}
-    </span>
-{% endmacro post_date %}
+    {%- if page.date %}
+        <time class="post__date" datetime="{{ page.date | date(format="%Y-%m-%d") }}" dir="ltr">{{ page.date | date(format="%Y-%m-%d") }}</time>
+    {% endif -%}
+{% endmacro date %}
+
+
+{% macro reading_time(page) %}
+    <span class="post__time">≈ {{ date_macros::fa_digits(num=page.reading_time) }} دقیقه</span>
+{% endmacro reading_time %}
 
 
 {% macro earlier_later(page) %}
     {%- if config.extra.enable_post_view_navigation %}
         {%- if page.lower or page.higher %}
-            <div class="pagination">
-                <div class="pagination__title">
-                    <span class="pagination__title-h">{{ config.extra.post_view_navigation_prompt }}</span>
-                    <hr />
-                </div>
-                <div class="pagination__buttons">
-                    {%- if page.higher %}
-                        <span class="button previous">
-                            <a href="{{ page.higher.permalink | safe }}">
-                                <span class="button__icon">←</span>&nbsp;
-                                <span class="button__text">{{ page.higher.title }}</span>
-                            </a>
-                        </span>
-                    {% endif %}
-                    {% if page.lower %}
-                        <span class="button next">
-                            <a href="{{ page.lower.permalink | safe }}">
-                                <span class="button__text">{{ page.lower.title }}</span>&nbsp;
-                                <span class="button__icon">→</span>
-                            </a>
-                        </span>
-                    {% endif -%}
-                </div>
-            </div>
+            <nav class="pagination post-nav" aria-label="پیمایش مطالب">
+                {%- if page.higher %}
+                    <a class="pgn prev" href="{{ page.higher.permalink | safe }}"><span aria-hidden="true">←</span> پست جدیدتر</a>
+                {%- else %}
+                    <span class="pgn pgn--empty"></span>
+                {%- endif %}
+                {%- if page.lower %}
+                    <a class="pgn next" href="{{ page.lower.permalink | safe }}">پست قدیمی‌تر <span aria-hidden="true">→</span></a>
+                {%- else %}
+                    <span class="pgn pgn--empty"></span>
+                {%- endif %}
+            </nav>
         {% endif -%}
     {% endif -%}
 {% endmacro earlier_later %}
 
 
-{% macro header(page) %}
-    <h1 class="post-title"><a href="{{ page.permalink | safe }}">{{ page.title }}</a></h1>
-
-    <div class="post-details">
-        <div class="post-meta-inline">
-            {{ post_macros::date(page=page) }}
-        </div>
-
-        {{ post_macros::tags(page=page) }}
-    </div>
-{% endmacro header %}
-
-
 {% macro list_posts(pages) %}
-    <ul>
+    <ul class="post__list">
     {%- for page in pages %}
         {%- if page.draft %}
             {% continue %}
         {% endif -%}
-        <li class="post-list">
-            <a href="{{ page.permalink | safe }}">
-                <span class="post-date">{{ page.date }}</span>
-                :: <span class="post-list-title">{{ page.title }}</span></a>
-            {{ post_macros::tags(page=page, short=true) }}
+        <li>
+            <span class="date" dir="ltr">{{ page.date }}</span>
+            <a class="title" href="{{ page.permalink | safe }}">{{ page.title }}</a>
+            {{ post_macros::tags(page=page) }}
         </li>
     {% endfor -%}
     </ul>
@@ -96,18 +84,60 @@
 
 {% macro tags(page, short=false) %}
     {%- if page.taxonomies and page.taxonomies.tags %}
-        <span class="post-tags-inline">
-            {%- if short %}
-                ::
-                {%- set sep = "," -%}
-            {% else %}
-                :: تگ‌ها :&nbsp;
-                {%- set sep = "&nbsp;" -%}
-            {% endif -%}
+        <span class="post__tags">
             {%- for tag in page.taxonomies.tags | sort | unique(case_sensitive=false) %}
-                <a class="post-tag" href="{{ get_taxonomy_url(kind='tags', name=tag) | safe }}">#{{ tag }}</a>
-                {%- if not loop.last %}{{ sep | safe }}{% endif -%}
-            {% endfor -%}
+                <a class="post__tag" href="{{ get_taxonomy_url(kind='tags', name=tag) | safe }}" dir="auto">#{{ tag }}</a>
+            {%- endfor %}
         </span>
     {% endif -%}
 {% endmacro tags %}
+
+
+{% macro toc(toc, level=0) %}
+    <ul class="toc__list{% if level > 0 %} toc__list--sub{% endif %}">
+        {%- for h in toc %}
+            <li class="toc__item toc__item--{{ h.level }}">
+                <a href="{{ h.permalink | safe }}">{{ h.title | safe }}</a>
+                {%- if h.children %}
+                    {{ post_macros::toc(toc=h.children) }}
+                {%- endif %}
+            </li>
+        {% endfor -%}
+    </ul>
+{% endmacro toc %}
+
+
+{% macro related(page, limit=3) %}
+    {%- if page.taxonomies and page.taxonomies.tags %}
+        {%- set mine = page.taxonomies.tags %}
+        {%- set index_section = get_section(path='_index.md') %}
+        {%- set all_pages = index_section.pages %}
+        {%- set_global related = [] %}
+        {%- for p in all_pages %}
+            {%- if p.permalink != page.permalink and p.taxonomies and p.taxonomies.tags %}
+                {%- set_global score = 0 %}
+                {%- for t in p.taxonomies.tags %}
+                    {%- if t in mine %}
+                        {%- set_global score = score + 1 %}
+                    {%- endif %}
+                {%- endfor %}
+                {%- if score > 0 %}
+                    {%- set_global related = related | concat(with=p) %}
+                {%- endif %}
+            {%- endif %}
+        {%- endfor %}
+        {%- if related | length > 0 %}
+        <aside class="related">
+            <h2 class="related__title">مطالب مرتبط</h2>
+            <ul class="related__list">
+                {%- for p in related | slice(start=0, end=limit) %}
+                <li class="related__item">
+                    <a class="related__link" href="{{ p.permalink | safe }}">{{ p.title }}</a>
+                    <span class="related__tags">{{ post_macros::tags(page=p) }}</span>
+                </li>
+                {%- endfor %}
+            </ul>
+        </aside>
+        {%- endif %}
+    {%- endif -%}
+{% endmacro related %}

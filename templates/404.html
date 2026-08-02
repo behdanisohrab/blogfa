@@ -9,8 +9,10 @@
 {% endblock header_menu %}
 
 {% block content %}
-<div class="post">
-  <h1 class="post-title">{% block heading %}گم شدید؟{% endblock heading %}</h1>
-  <p>{% block message %}این صفحه وجود ندارد!{% endblock message %}</p>
+<div class="post post--404">
+  <span class="e404__code">404</span>
+  <h1 class="e404__title">{% block heading %}فایل پیدا نشد{% endblock heading %}</h1>
+  <p class="e404__msg">{% block message %}این صفحه وجود ندارد یا جابه‌جا شده است.{% endblock message %}</p>
+  <a class="post__more" href="{{ config.base_url | safe }}">بازگشت به خانه <span aria-hidden="true">←</span></a>
 </div>
 {% endblock content %}

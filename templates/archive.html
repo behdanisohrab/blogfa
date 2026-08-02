@@ -5,8 +5,8 @@
 {%- endblock -%}
 
 {% block content %}
-    <div class="post">
-        <h1 class="post-title">{{ page.title }}</h1>
+    <div class="post post--single" style="--i: 1">
+        <h1 class="post__title post__title--single">{{ page.title }}</h1>
 
         {% set section = get_section(path="_index.md") %}
 

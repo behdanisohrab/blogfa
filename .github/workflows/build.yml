@@ -32,7 +32,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-        ZOLA_VERSION: "0.19.2"
+        ZOLA_VERSION: "0.22.1"
     steps:
       - name: Install Zola
         run: |
@@ -50,6 +50,9 @@ jobs:
       - name: Build with Zola
         run: |
                     zola build
+      - name: Check links with Zola
+        run: |
+                    zola check
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:

@@ -1,28 +1,29 @@
 {% import "macros/title.html" as title_macros -%}
 
 {% macro head(config) %}
-    <meta http-equiv="content-type" content="text/html; charset=utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="noodp"/>
+    <meta name="theme-color" content="{{ config.extra.theme_color | default(value='#0a0f0c') }}">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3E%3Crect%20width='64'%20height='64'%20rx='12'%20fill='%230a0f0c'/%3E%3Ctext%20x='8'%20y='47'%20font-family='monospace'%20font-size='38'%20font-weight='bold'%20fill='%233ddc84'%3E%26gt;%5F%3C/text%3E%3C/svg%3E">
 
-    <link rel="stylesheet" href="{{ get_url(path="style.css", trailing_slash=false) | safe }}">
+    <link rel="preload" as="style" href="{{ get_url(path='style.css', trailing_slash=false) | safe }}">
+    <link rel="stylesheet" href="{{ get_url(path='style.css', trailing_slash=false) | safe }}">
+
+    <link rel="stylesheet" href="{{ get_url(path='giallo-light.css', trailing_slash=false) | safe }}" media="(prefers-color-scheme: light)">
+    <link rel="stylesheet" href="{{ get_url(path='giallo-dark.css', trailing_slash=false) | safe }}" media="(prefers-color-scheme: dark)">
+
+    <script defer src="{{ get_url(path='copy.js', trailing_slash=false) | safe }}"></script>
+    <script defer src="{{ get_url(path='progress.js', trailing_slash=false) | safe }}"></script>
 
 {%- if config.extra.accent_color %}
-    <link rel="stylesheet" href="{{ get_url(path="color/" ~ config.extra.accent_color ~ ".css", trailing_slash=false) | safe }}">
+    <link rel="stylesheet" href="{{ get_url(path='color/' ~ config.extra.accent_color ~ '.css', trailing_slash=false) | safe }}">
 {% else %}
-    <link rel="stylesheet" href="{{ get_url(path="color/blue.css", trailing_slash=false) | safe }}">
+    <link rel="stylesheet" href="{{ get_url(path='color/green.css', trailing_slash=false) | safe }}">
 {% endif -%}
 
-{%- if config.extra.background_color %}
-    {%- if config.extra.accent_color and config.extra.background_color != config.extra.accent_color %}
-        <link rel="stylesheet" href="{{ get_url(path="color/background_" ~ config.extra.background_color ~ ".css", trailing_slash=false) | safe }}">
-    {% endif -%}
-{% endif -%}
-
-{%- if config.extra.use_full_hack_font %}
-    <link rel="stylesheet" href="{{ get_url(path="font-hack.css", trailing_slash=false) | safe }}">
-{% else %}
-    <link rel="stylesheet" href="{{ get_url(path="font-hack-subset.css", trailing_slash=false) | safe }}">
+{%- if config.extra.background_color and config.extra.background_color != config.extra.accent_color %}
+    <link rel="stylesheet" href="{{ get_url(path='color/background_' ~ config.extra.background_color ~ '.css', trailing_slash=false) | safe }}">
 {% endif -%}
 
 {% endmacro head %}
@@ -75,7 +76,7 @@
     {%- if config.extra.default_og_image %}
         {%- set og_image = config.extra.default_og_image %}
     {%- endif %}
-{%- endif -%}{# #}
+{%- endif -%}
     <meta name="description" content="{{ description | safe }}">
 
     <meta property="og:description" content="{{ description | safe }}">
@@ -89,6 +90,6 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:description" content="{{ description | safe }}">
     <meta name="twitter:title" content="{{ title | safe }}">
-    <meta property="twitter:domain" content="{{ config.base_url | replace(from="https://", to="") }}">
+    <meta property="twitter:domain" content="{{ config.base_url | replace(from='https://', to='') }}">
     <meta property="twitter:url" content="{{ permalink | safe }}">
 {% endmacro open_graph %}

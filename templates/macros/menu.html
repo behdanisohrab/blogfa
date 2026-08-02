@@ -1,15 +1,16 @@
 {% macro menu(config, current_path) %}
     {%- set current_item = false -%}
     {%- if config.extra.menu_items %}
+        {%- set base = config.base_url | trim_end_matches(pat="/") -%}
         {%- set menu_items = config.extra.menu_items -%}
 
             {%- for item in menu_items %}
-                {%- set abs_item_url = item.url | replace(from="$BASE_URL", to=config.base_url) -%}
+                {%- set abs_item_url = item.url | replace(from="$BASE_URL", to=base) -%}
                 {%- set is_current = current_url == abs_item_url ~ "/"
                                      or current_url is starting_with(abs_item_url)
                 -%}
-                {%- set is_base = abs_item_url == config.base_url
-                                  or abs_item_url == config.base_url ~ "/"
+                {%- set is_base = abs_item_url == base
+                                  or abs_item_url == base ~ "/"
                 -%}
 
                 {%- if is_base %}
@@ -32,21 +33,21 @@
 
 {% macro menu_for(config, current_item) %}
     {%- if config.extra.menu_items %}
+        {%- set base = config.base_url | trim_end_matches(pat="/") -%}
         {%- set menu_items = config.extra.menu_items -%}
 
-        <nav class="menu">
-            <ul class="menu__inner">
+        <nav class="header__menu" aria-label="منوی اصلی">
+            <ul class="menu__list">
             {%- for item in menu_items %}
-                <li {%- if current_item and current_item == item %} class="active" {%- endif %}>
+                <li class="menu__item{%- if current_item and current_item == item %} is-active{%- endif %}">
                     {%- if item.newtab -%}
-                        <a href="{{ item.url | replace(from="$BASE_URL", to=config.base_url) | safe }}" target="_blank" rel="noopener noreferrer">{{ item.name | safe }}</a>
+                        <a href="{{ item.url | replace(from="$BASE_URL", to=base) | safe }}" target="_blank" rel="noopener noreferrer">{{ item.name | safe }}</a>
                     {%- else -%}
-                        <a href="{{ item.url | replace(from="$BASE_URL", to=config.base_url) | safe }}">{{ item.name | safe }}</a>
+                        <a href="{{ item.url | replace(from="$BASE_URL", to=base) | safe }}">{{ item.name | safe }}</a>
                     {%- endif -%}
                 </li>
             {% endfor -%}
             </ul>
         </nav>
     {% endif -%}
-{% endmacro menu %}
-
+{% endmacro menu_for %}
